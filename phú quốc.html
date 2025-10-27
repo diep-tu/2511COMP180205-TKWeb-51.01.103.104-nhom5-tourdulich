@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du lịch TpHCM - Phú Quốc - Khám phá Việt Nam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        :root {
+            --primary-color:rgb(0, 153, 255); 
+            --secondary-color: #ffb300;  
+            --text-color: #333333;
+            --background-light: #fdfdfd; 
+            --accent-color: #c0ca33;    
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #263238;
+            font-weight: 700;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif; 
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s, border-bottom 0.3s;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        .hero-banner {
+            position: relative;
+            min-height: 650px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7) grayscale(20%); 
+            transition: filter 0.5s;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+            text-align: center;
+        }
+    .hero-overlay h1 {
+            font-family: 'Merriweather';
+            font-size: 64px; 
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 1); 
+            max-width: 9000px;
+            letter-spacing: 2px; 
+            text-align: center;
+        }
+        .hero-overlay p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(255, 179, 0, 0.4);
+        }
+        .cta-button:hover {
+            background-color: #ff9800;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.6);
+        }
+        .tour-overview {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 0;
+            background-color: white;
+            box-shadow: var(--shadow-light);
+            margin-top: -80px; 
+            position: relative;
+            z-index: 5;
+            border-radius: 10px;
+            border-top: 5px solid var(--secondary-color); 
+        }
+        .overview-box {
+            text-align: center;
+            padding: 0 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .overview-box p {
+            color: #6c757d;
+            margin: 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .overview-box h3 {
+            color: var(--primary-color);
+            margin: 8px 0 0;
+            font-size: 22px;
+            font-family: 'Merriweather';
+        }
+        .overview-box.price h3 {
+            color: #d84315; 
+            font-size: 28px;
+        }
+        .detail-section {
+            padding: 100px 0 80px;
+            background-color: var(--background-light);
+            text-align: center;
+        }
+        .detail-section h2 {
+            margin-bottom: 60px;
+            font-size: 38px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .detail-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px; 
+            text-align: left;
+        }
+        .day-plan {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+            border: 1px solid #eee;
+            transition: transform 0.4s ease-in-out;
+        }
+    .day-plan:hover {
+            transform: scale(1.03); 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--secondary-color);
+        }
+        .day-plan h4 {
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            margin: -30px -30px 20px -30px; 
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            font-size: 20px;
+            font-family: 'Merriweather';
+        }
+        .day-plan ul {
+            list-style: none;
+            padding: 0;
+        }
+        .day-plan li {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 25px;
+        }
+        .day-plan li::before {
+            content: "🌄";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em;
+            position: absolute;
+            left: 0;
+        }
+        .day-plan .highlight {
+            font-weight: 700;
+            color: var(--primary-color); 
+        }
+        .service-section {
+            padding: 80px 0;
+            background-color: #f0f4c3; 
+        }
+        .service-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+        .service-grid {
+            gap: 60px; 
+        }
+        .bao-gom, .khong-bao-gom {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            background-color: white;
+        }
+        .bao-gom h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        .khong-bao-gom h3 {
+            color: #d84315;
+            border-bottom: 2px solid #ffccbc;
+            padding-bottom: 10px;
+        }
+        .service-section li {
+            padding: 10px 0;
+            font-size: 16px;
+            border-bottom: 1px dotted #e0e0e0;
+        }
+        .service-section .icon {
+            font-size: 20px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .bao-gom .icon { color: var(--accent-color); }
+        .khong-bao-gom .icon { color: #d84315; }
+        .contact-section {
+            padding: 100px 0;
+            background-color: rgb(0, 153, 255);
+            color: white;
+            text-align: center;
+        }
+        .contact-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 18px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 1px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .contact-form input:focus {
+            border: 1px solid var(--secondary-color);
+        }
+            .tour-price-calculator {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .tour-price-calculator h4 {
+            color: #005baa;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .tour-price-calculator label {
+            display: inline-block;
+            width: 260px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .tour-price-calculator input {
+            width: 70px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .tour-price-calculator p {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #000;
+        }
+
+        .tour-price-calculator button {
+            background-color: #f9a825;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tour-price-calculator button:hover {
+            background-color: #ffb300;
+        }
+        /* Hiệu ứng parallax */
+        .hero-image {
+            background-attachment: fixed;
+        }
+        /* Hiệu ứng fade-in khi load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s forwards;
+        }
+        .fade-in-delay {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 2s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Nút nhấp nháy */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,179,0,0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255,179,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,179,0,0); }
+        }
+
+        /* Modal popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            animation: popUp 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        @keyframes popUp {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close-btn {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+        }
+        .close-btn:hover {
+            color: #ff9800;
+        }
+        .modal-content h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        /* Scroll reveal effect */
+        .day-plan, .service-section, .tour-overview {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .day-plan.visible, .service-section.visible, .tour-overview.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 🍃 Canvas phủ nền */
+        #leafCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 🌅 Hiệu ứng chuyển ảnh banner */
+        .hero-image {
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-overlay {
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo"><img src="./logo1.jpg" width="70px">HOCHIMINH TOURIST</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="phú quốc.html">Phú Quốc</a></li>
+                    <li><a href="rạch giá.html">Rạch Giá</a></li>
+                    <li><a href="#contact">Đặt Tour</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-banner">
+        <div class="hero-image" style="background-image: url('image/z7156492917453_e76ed2f33adce2e039c9f5c33b9e7ac3.jpg');"></div>
+        <div class="hero-overlay">
+            <div class="container">
+             <h1>PHÚ QUỐC</h1>
+                <p>Phú Quốc sẽ là điểm dừng chân hoàn hảo để thư giãn, tận hưởng biển xanh, cát trắng và các khu vui chơi giải trí đẳng cấp quốc tế.</p>
+                <a href="#details" class="cta-button">XEM LỊCH TRÌNH CHI TIẾT</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-overview container">
+        <div class="overview-box duration">
+            <p>Thời gian</p>
+            <h3>3 Ngày 2 Đêm</h3>
+        </div>
+        <div class="overview-box transport">
+            <p>Phương tiện</p>
+            <h3>Máy bay</h3>
+        </div>
+        <div class="overview-box price">
+            <p>Giá từ</p>
+            <h3>3.990.000 VNĐ</h3>
+        </div>
+        <div class="overview-box highlights">
+            <p>Điểm nổi bật</p>
+            <h3>Nam Đảo. Bắc Đảo. Văn Hóa-Ẩm Thực.</h3>
+        </div>
+    </section>
+
+    <section id="details" class="detail-section">
+        <div class="container">
+            <h2>LỊCH TRÌNH KHÁM PHÁ PHÚ QUỐC</h2>
+            
+            <div class="detail-grid">
+                <div class="day-plan">
+                    <h4>NGÀY 1: NAM ĐẢO</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> Khởi hành từ sân bay Tân Sơn Nhất (5h00), đến sân bay Phú Quốc (7h00), ăn sáng. Xe đón khách di chuyển về khách sạn. Nghỉ trưa và ăn trưa.</li>
+                        <li><span class="highlight">Tham quan:</span> Lặn biển & Tắm biển - Khu vực Mũi Ông Đội/Hòn Móng Tay (Tùy chọn tham gia tour cano lặn ngắm san hô hoặc thư giãn tại bãi biển đẹp.),</li>
+                        <li><span class="highlight">Chiều:</span>Trải nghiệm Cáp treo Hòn Thơm vượt biển dài nhất thế giới, Ngắm hoàng hôn	Sunset Sanato/Ocsen Beach Bar, Tận hưởng hoàng hôn tuyệt đẹp và check-in tại những quán bar/cafe ven biển nổi tiếng.</li>
+                        <li><span class="highlight">Tối:</span> Ăn tối, Chợ Đêm Dương Đông, Thưởng thức bữa tối hải sản tươi ngon và mua sắm đặc sản địa phương.</li>
+                    </ul>
+                </div>
+
+                <div class="day-plan">
+    
+                    <h4>NGÀY 2: BẮC ĐẢO</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> Ăn sáng. Khám phá Bắc Đảo, Khám phá VinWonders (Công viên chủ đề).</li>
+                        <li><span class="highlight">Trưa:</span> Ăn trưa. Vinpearl Safari (tham quan vườn thú bán hoang dã).</li>
+                        <li><span class="highlight">Chiều:</span> Tham quan tự do.</li>
+                        <li><span class="highlight">Tối:</span> Ăn tối và thưởng thức show diễn thực cảnh "Sắc Màu Venice" tại Grand World (Thành phố không ngủ).</li>
+                    </ul>
+                </div>
+
+                <div class="day-plan">
+                    <h4>NGÀY 3: VĂN HÓA - ẨM THỰC</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> Thưởng thức món Bún Kèn trứ danh của Phú Quốc &ndash; món ăn sáng đặc trưng mà ít nơi có, mang hương vị cá biển độc đáo. Viếng Dinh Cậu và Dinh Bà Thủy Long Thánh Mẫu – biểu tượng tín ngưỡng tâm linh và văn hóa dân gian của ngư dân đảo. Ngắm nhìn cảnh biển và ghềnh đá. Ghé thăm cơ sở sản xuất Rượu Sim Phú Quốc. Tìm hiểu về quy trình ủ rượu từ trái sim rừng và thưởng thức thử rượu, mật sim. Đặc sản chỉ có tại đảo.</li>
+                        <li><span class="highlight">Trưa:</span> Thưởng thức bữa trưa với món Gỏi Cá Trích (món ăn tươi sống đặc trưng của đảo, cuốn với rau rừng) và Bánh Canh Ghẹ thơm ngon tại khu vực Dương Đông.</li>
+                        <li><span class="highlight">Chiều:</span> Viếng Chùa Hộ Quốc (Thiền viện Trúc Lâm Hộ Quốc). Ngôi chùa với thế "tựa sơn, hướng thủy" có kiến trúc hùng vĩ và cảnh quan tuyệt đẹp.</li>
+                        <li><span class="highlight">Tối:</span> Về khách sạn chuẩn bị ra sân bay về TPHCM. Chuyến đi kết thúc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="included" class="service-section container">
+        <h2>DỊCH VỤ BAO GỒM VÀ KHÔNG BAO GỒM</h2>
+        <div class="service-grid">
+            <div class="bao-gom">
+<h3><span class="icon">&#10003;</span> BAO GỒM TRONG TOUR</h3>
+                <ul>
+                    <li>Vé máy bay khứ hồi Tphcm - Phú Quốc.</li>
+                    <li>Vé đi thuyền ra đảo.</li>
+                    <li>Bữa ăn chính và bữa ăn sáng theo lịch trình.</li>
+                    <li>Vé tham quan các điểm trong chương trình.</li>
+                </ul>
+            </div>
+            <div class="khong-bao-gom">
+                <h3><span class="icon">&#10007;</span> KHÔNG BAO GỒM</h3>
+                <ul>
+                    <li>Thuế VAT.</li>
+                    <li>Chi phí cá nhân: giặt ủi, đồ uống ngoài bữa ăn.</li>
+                    <li>Tiền tip cho hướng dẫn viên và lái xe.</li>
+                    <li>Chi phí thuê trang phục dân tộc, chụp ảnh riêng.</li>
+                    <li>Phụ thu phòng đơn (nếu yêu cầu).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>ĐẶT TOUR VÀ NHẬN ƯU ĐÃI SỚM</h2>
+            <p>Liên hệ ngay để được tư vấn lịch trình chi tiết và giá tốt nhất!</p>
+            <form action="#" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Họ và tên (*)" required>
+                <input type="tel" name="phone" placeholder="Số điện thoại (*)" required>
+                <input type="email" name="email" placeholder="Email (để nhận ưu đãi)">
+                <input type="text" name="departure_date" placeholder="Ngày khởi hành dự kiến">
+                <button type="submit" class="cta-button form-submit-btn">ĐĂNG KÝ ĐẶT CHỖ</button>
+            </form>
+            <div class="tour-price-calculator">
+                <h4>Giá vé</h4>
+                <label>Người lớn (3.990.000đ): </label>
+                <input type="number" id="adult" value="0" min="0" onchange="calculateTotal()"><br>
+
+                <label>Trẻ em (1.990.000đ): </label>
+                <input type="number" id="child" value="0" min="0" onchange="calculateTotal()"><br>
+
+                <label>Em bé (Miễn phí): </label>
+                <input type="number" id="baby" value="0" min="0" onchange="calculateTotal()"><br>
+                <p><b>Tổng tiền:</b> <span id="totalPrice"></span> VNĐ</p>
+                <button type="button" id="openModalBtn">Đặt vé</button>
+            </div>
+        </div>
+    </section>
+    <!-- Modal đặt vé thành công -->
+            <div id="successModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>🎉 Đặt tour thành công!</h2>
+                    <p>Cảm ơn bạn đã đăng ký tour. Nhân viên HoChiMinhTourist sẽ liên hệ sớm nhất!</p>
+                </div>
+            </div>
+    <footer>
+        <div class="container">
+            <p>Liên hệ: Hotline 1900 XXXX | Email: nhom5@vietnamtravel.vn</p>
+            <p>&copy; 2025 HoChiMinhTourist. All rights reserved.</p>
+        </div>
+    </footer>
+    <canvas id="leafCanvas"></canvas>
+    <script>
+        function calculateTotal() {
+            const priceAdult = 3990000;
+            const priceChild = 1990000;
+            const numAdult = parseInt(document.getElementById("adult").value) || 0;
+            const numChild = parseInt(document.getElementById("child").value) || 0;
+            const total = (numAdult * priceAdult) + (numChild * priceChild);
+            document.getElementById("totalPrice").textContent = total.toLocaleString("vi-VN");
+        }
+
+        // Modal popup + hiệu ứng cuộn
+        $(document).ready(function() {
+        const modal = $("#successModal");
+
+        $("#openModalBtn, #bookBtn").click(function() {
+            modal.fadeIn(300);
+        });
+        $(".close-btn").click(function() {
+            modal.fadeOut(200);
+        });
+        $(window).click(function(e) {
+            if ($(e.target).is(modal)) modal.fadeOut(200);
+        });
+
+        $(window).on("scroll", function() {
+            $(".day-plan, .service-section, .tour-overview").each(function() {
+            if ($(this).offset().top < $(window).scrollTop() + $(window).height() - 100) {
+                $(this).addClass("visible");
+            }
+            });
+        });
+        });
+
+        // 🌅 Hero Slider
+        const heroImages = [
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8f/8f/d5/photo3jpg.jpg?w=500&h=400&s=1",
+        "https://bcp.cdnchinhphu.vn/334894974524682240/2023/12/31/dak-lak-170399630245098112613.jpg",
+        "https://htsinternationaltravel.com/uploads/Article/diem-den/dak-lak.jpg",
+        "https://123tadi.com/wp-content/Uploads/2020/12/DL%20Dak%20Lak-%20Ava%203.jpg"
+        ];
+        let currentImage = 0;
+        const hero = document.querySelector('.hero-image');
+        setInterval(() => {
+        currentImage = (currentImage + 1) % heroImages.length;
+        hero.style.opacity = 0;
+        setTimeout(() => {
+            hero.style.backgroundImage = `url('${heroImages[currentImage]}')`;
+            hero.style.opacity = 1;
+        }, 600);
+        }, 6000);
+
+        // 🍃 Hiệu ứng lá rơi
+        const canvas = document.getElementById("leafCanvas");
+        const ctx = canvas.getContext("2d");
+        let leaves = [];
+        let W, H;
+
+        function resizeCanvas() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        function createLeaf() {
+        return {
+            x: Math.random() * W,
+            y: Math.random() * -50,
+            size: 15 + Math.random() * 15,
+            speedY: 1 + Math.random() * 2,
+            sway: Math.random() * 1.5,
+            angle: Math.random() * 2 * Math.PI,
+            color: `rgba(${150 + Math.random()*50},${100 + Math.random()*100},50,0.8)`
+        };
+        }
+
+        function drawLeaves() {
+        ctx.clearRect(0, 0, W, H);
+        for (let leaf of leaves) {
+            leaf.y += leaf.speedY;
+            leaf.x += Math.sin(leaf.angle) * leaf.sway;
+            leaf.angle += 0.02;
+            if (leaf.y > H) {
+            leaf.y = Math.random() * -20;
+            leaf.x = Math.random() * W;
+            }
+            ctx.beginPath();
+            ctx.ellipse(leaf.x, leaf.y, leaf.size / 2, leaf.size / 3, 0, 0, 2 * Math.PI);
+            ctx.fillStyle = leaf.color;
+            ctx.fill();
+        }
+        requestAnimationFrame(drawLeaves);
+        }
+        for (let i = 0; i < 30; i++) leaves.push(createLeaf());
+        drawLeaves();
+    </script>
+</body>
+</html>

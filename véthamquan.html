@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vé Tham Quan - HoChiMinhTourist</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- AOS animation -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="vé tham quan.css">
+</head>
+
+<body>
+    <!-- Thanh menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="./logo1.jpg" alt="Logo" width="80px" height="45" class="me-2">
+                <span class="fw-bold text-uppercase" style="color:#dbe0e4;font-family: 'Playfair Display', serif;">HoChiMinhTourist</span>
+            </a>
+
+            <!-- Nút menu mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Danh mục menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ</a></li>
+
+                <!-- Dropdown du lịch -->
+                <li class="nav-item dropdown position-static">
+                <a class="nav-link dropdown-toggle" href="#" id="dulichDropdown" role="button" data-bs-toggle="dropdown">
+                    Du lịch
+                </a>
+                <div class="dropdown-menu mega-menu p-3" aria-labelledby="dulichDropdown">
+                    <div class="row">
+                    <!-- Miền Bắc -->
+                    <div class="col-md-2">
+                        <h6 class="fw-bold text-primary"><a href="miền bắc.html">Miền Bắc</a></h6>
+                        <ul class="list-unstyled">
+                            <li><a href="hà nội.html" class="dropdown-item">Hà Nội</a></li>
+                            <li><a href="hà giang.html" class="dropdown-item">Hà Giang</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Miền Trung -->
+                    <div class="col-md-2">
+                        <h6 class="fw-bold text-primary"><a href="miền trung.html">Miền Trung</a></h6>
+                        <ul class="list-unstyled">
+                            <li><a href="Nha Trang.html" class="dropdown-item">Nha Trang</a></li>
+                            <li><a href="Mũi né.html" class="dropdown-item">Mũi Né</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Tây Nguyên -->
+                    <div class="col-md-2">
+                        <h6 class="fw-bold text-primary"><a href="tây nguyên.html">Tây Nguyên </a> </h6>
+                        <ul class="list-unstyled">
+                            <li><a href="dak lak.html" class="dropdown-item">Đắk Lắk</a></li>
+                            <li><a href="lâm đồng.html" class="dropdown-item">Lâm Đồng</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Tây Nam Bộ -->
+                    <div class="col-md-2">
+                        <h6 class="fw-bold text-primary"><a href="miền tây.html"> Tây Nam Bộ</a></h6>
+                        <ul class="list-unstyled">
+                            <li><a href="rạch giá.html" class="dropdown-item">Rạch Giá</a></li>
+                            <li><a href="phú quốc.html" class="dropdown-item">Phú Quốc</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Đông Nam Bộ -->
+                    <div class="col-md-2">
+                        <h6 class="fw-bold text-primary"><a href="đông nam bộ.html"> Đông Nam Bộ </a></h6>
+                        <ul class="list-unstyled">
+                            <li><a href="vungtau.html" class="dropdown-item">Vũng Tàu</a></li>
+                            <li><a href="tayninh.html" class="dropdown-item">Tây Ninh</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Thuê xe.html" target="_blank">Thuê xe</a></li>
+                <li class="nav-item"><a class="nav-link" href="véthamquan.html">Vé tham quan</a></li>
+                <li class="nav-item"><a class="nav-link" href="Liên hệ.html">Liên hệ</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero">
+        <h1 class="animate__animated animate__fadeInDown">Vé Tham Quan</h1>
+    </section>
+
+    <main class="container">
+
+    <!-- Dịch vụ nổi bật -->
+    <section class="featured-tours" data-aos="fade-up">
+        <h2 class="text-center mb-4">Các dịch vụ nổi bật</h2>
+        <div class="row" id="featured-carousel" class="carousel-container"></div>
+    </section>
+
+    <!-- Tất cả dịch vụ -->
+    <section class="all-tours mt-5" data-aos="fade-up">
+        <h2 class="text-center mb-4">Tất cả Vé Tham Quan</h2>
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+            <button class="btn btn-outline-primary filter-btn active" data-filter="all">Tất cả</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="popular">Phổ biến</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="new">Mới nhất</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="discount">Giảm giá</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="price-asc">Giá rẻ</button>
+            <button class="btn btn-outline-primary filter-btn" data-filter="price-desc">Giá cao</button>
+        </div>
+        <div class="row" id="all-tours-grid"></div>
+    </section>
+
+    <!-- Form đặt vé -->
+    <section class="booking-form" data-aos="fade-up">
+        <h2 class="text-center mb-4"><i class="fas fa-calendar-check"></i> Đặt vé nhanh</h2>
+        <form id="quick-book-form" class="card p-4 shadow-sm bg-white">
+            <div class="form-grid">
+                <div>
+                    <label>Họ và tên</label>
+                    <i class="fas fa-user"></i><input type="text" id="full-name" class="form-control" placeholder="Nguyễn Văn A" required>
+                </div>
+                <div>
+                    <label>Số điện thoại</label>
+                    <i class="fas fa-phone"></i><input type="tel" id="phone" class="form-control" placeholder="090xxxxxxx" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <i class="fas fa-envelope"></i><input type="email" id="email" class="form-control" placeholder="email@example.com" required>
+                </div>
+                <div>
+                    <label>Chọn vé</label>
+                    <i class="fas fa-map-marked-alt"></i><select id="tour-select" class="form-select"></select>
+                </div>
+                <div>
+                    <label>Ngày đi</label>
+                    <i class="fas fa-calendar-alt"></i><input type="text" id="date-picker" class="form-control" placeholder="DD/MM/YYYY" required>
+                </div>
+                <div>
+                    <label>Số vé</label>
+                    <i class="fas fa-ticket-alt"></i><input type="number" id="ticket-count" class="form-control" min="1" value="1" required>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">Đăng ký ngay <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </form>
+        <div id="payment-summary" class="mt-4"></div>
+    </section>
+</main>
+
+<footer>
+    <p>Liên hệ: Hotline 1900 XXXX | Email: info@hochiminhtourist.vn</p>
+    <p>&copy; 2025 HoChiMinhTourist. All rights reserved.</p>
+</footer>
+
+<script>
+    // ------------------ DỮ LIỆU TOUR ------------------
+    const tourData = [
+        {   id:1, 
+            title:"Vé tham quan Dinh Độc Lập", 
+            image:"https://cdn.xanhsm.com/2024/11/0939bfe5-dinh-doc-lap-1.jpg", 
+            rating:4.9, price:65000, 
+            isFeatured:true, 
+            isDiscount:false, 
+            tags:["popular","history"] 
+        },
+        {   id:2, 
+            title:"Bảo tàng Chứng tích Chiến tranh", 
+            image:"https://images.hcmcpv.org.vn/res/news/2017/07/04-07-2017-nguoi-xep-lai-lich-su-3F11612E.jpg", 
+            rating:4.8, 
+            price:40000, 
+            isFeatured:true, 
+            isDiscount:true, 
+            tags:["popular","discount"] 
+        },
+        {   id:3, 
+            title:"Landmark 81 SkyView", 
+            image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb2oAYEJf51bE8T5Btp73y6go-6RIMNBNqzw&s", 
+            rating:4.9, 
+            price:810000, 
+            isFeatured:true, 
+            isDiscount:false, 
+            tags:["popular","new"] 
+        },
+        {   id:4, 
+            title:"Công viên nước Đầm Sen", 
+            image:"https://r2.nucuoimekong.com/wp-content/uploads/cong-vien-nuoc-dam-sen.jpg", 
+            rating:4.7, 
+            price:200000, 
+            isFeatured:false, 
+            isDiscount:false, 
+            tags:["family"] 
+        },
+        {   id:5, 
+            title:"Địa đạo Củ Chi", 
+            image:"https://r2.nucuoimekong.com/wp-content/uploads/dia-dao-cu-chi.jpg", 
+            rating:4.8, 
+            price:110000, 
+            isFeatured:false, 
+            isDiscount:false, 
+            tags:["history"] 
+        },
+        {   id:6, 
+            title:"Rừng ngập mặn Cần Giờ", 
+            image:"https://vietrektravel.com/ckeditor/plugins/fileman/Uploads/%E1%BA%A2nh%20DL/rung-sac-can-gio-1.jpg", 
+            rating:4.6, 
+            price:750000, 
+            isFeatured:false, 
+            isDiscount:true, 
+            tags:["nature","discount"] 
+        },
+    ];
+
+    // ------------------ KHỞI TẠO GIAO DIỆN ------------------
+    $(document).ready(function(){
+
+        // Sticky header
+        $(window).on('scroll',function(){
+            $('.top-nav').toggleClass('sticky', $(this).scrollTop() > 20);
+        });
+
+        // Select2 + Flatpickr
+        $('#tour-select').select2({ placeholder:'Chọn vé tham quan...' });
+        tourData.forEach(t => $('#tour-select').append(new Option(t.title, t.id)));
+        flatpickr("#date-picker",{ altInput:true, altFormat:"d/m/Y", dateFormat:"Y-m-d", minDate:"today" });
+
+        // Render danh sách tour
+        function createCard(t){
+            return `
+            <div class="col-md-4 mb-4">
+                <div class="tour-card" data-id="${t.id}">
+                    <div class="card-image position-relative">
+                        <img src="${t.image}" alt="${t.title}">
+                        ${t.isDiscount ? '<div class="discount-badge">Giảm giá</div>' : ''}
+                    </div>
+                    <div class="p-3">
+                        <h5>${t.title}</h5>
+                        <p><i class="fas fa-star text-warning"></i> ${t.rating} | <strong>${t.price.toLocaleString('vi-VN')}đ</strong></p>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function renderTours(filter='all'){
+            let tours=[...tourData];
+            if(filter==='discount') tours=tours.filter(t=>t.isDiscount);
+            else if(filter==='popular') tours=tours.filter(t=>t.tags.includes('popular'));
+            else if(filter==='new') tours=tours.filter(t=>t.tags.includes('new'));
+            else if(filter==='price-asc') tours.sort((a,b)=>a.price-b.price);
+            else if(filter==='price-desc') tours.sort((a,b)=>b.price-a.price);
+
+            $('#all-tours-grid').hide().html(tours.map(createCard).join('')).fadeIn(300);
+            $('#featured-carousel').html(tourData.filter(t=>t.isFeatured).map(createCard).join(''));
+        }
+
+        renderTours();
+
+        $('.filter-btn').click(function(){
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            renderTours($(this).data('filter'));
+        });
+
+        // Click chọn tour
+        $(document).on('click','.tour-card',function(){
+            $('.tour-card').removeClass('border-primary');
+            $(this).addClass('border border-3 border-primary');
+            $('#tour-select').val($(this).data('id')).trigger('change');
+        });
+
+        // ------------------ Xử lý form đặt vé ------------------
+        $('#quick-book-form').on('submit', function(e){
+            e.preventDefault();
+
+            const name = $('#full-name').val(),
+                phone = $('#phone').val(),
+                email = $('#email').val(),
+                tourId = $('#tour-select').val(),
+                date = $('#date-picker').val(),
+                tickets = parseInt($('#ticket-count').val());
+
+            if (!name || !phone || !email || !tourId || !date) {
+                Swal.fire('Thiếu thông tin', 'Vui lòng điền đầy đủ!', 'warning');
+                return;
+            }
+
+            const tour = tourData.find(t => t.id == tourId);
+            const total = tour.price * tickets;
+
+            // ✅ 1️⃣ Tạo giao diện thanh toán
+            const summaryHTML = `
+                <div class="card shadow-sm animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="text-primary mb-3">Chi tiết thanh toán</h5>
+                        <p><strong>Khách:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Tour:</strong> ${tour.title}</p>
+                        <p><strong>Ngày đi:</strong> ${date}</p>
+                        <p><strong>Số vé:</strong> ${tickets}</p>
+                        <p><strong>Tổng:</strong> <span class="text-danger">${total.toLocaleString('vi-VN')} đ</span></p>
+
+                        <h6 class="mt-3">Chọn phương thức thanh toán:</h6>
+                        <div class="payment-methods mb-3">
+                            <label class="me-3">
+                                <input type="radio" name="payment-method" value="momo">
+                                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="40"> Momo
+                            </label>
+                            <label class="me-3">
+                                <input type="radio" name="payment-method" value="vnpay">
+                                <img src="https://static.ybox.vn/2020/2/5/1581089357407-1580819448160-vnpay.png" width="60"> VNPay
+                            </label>
+                            <label>
+                                <input type="radio" name="payment-method" value="cash"> 💵 Tiền mặt
+                            </label>
+                        </div>
+
+                        <button id="pay-btn" class="btn btn-success">
+                            <i class="fas fa-credit-card"></i> Thanh toán
+                        </button>
+                        <div id="loading-spinner" class="spinner-border text-success mt-3" style="display:none;" role="status"></div>
+                    </div>
+                </div>`;
+
+            // ✅ 2️⃣ Gán HTML vào vùng hiển thị
+            $('#payment-summary').html(summaryHTML).fadeIn(300);
+
+            // ✅ 3️⃣ Gán sự kiện click sau khi HTML được render
+            $('#pay-btn').on('click', function() {
+                const paymentMethod = $('input[name="payment-method"]:checked').val();
+
+                if (!paymentMethod) {
+                    Swal.fire('Chưa chọn phương thức thanh toán!', 'Vui lòng chọn Momo, VNPay hoặc Tiền mặt.', 'warning');
+                    return;
+                }
+
+                $(this).hide();
+                $('#loading-spinner').show();
+
+                setTimeout(() => {
+                    $('#loading-spinner').hide();
+
+                    if (paymentMethod === 'momo') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thanh toán Momo thành công!',
+                            text: 'Cảm ơn bạn đã sử dụng dịch vụ của HoChiMinhTourist.',
+                            imageUrl: 'https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png',
+                            imageWidth: 100,
+                            confirmButtonColor: '#d82d8b'
+                        });
+                    } else if (paymentMethod === 'vnpay') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thanh toán VNPay thành công!',
+                            text: 'Cảm ơn bạn đã sử dụng dịch vụ của HoChiMinhTourist.',
+                            imageUrl: 'https://static.ybox.vn/2020/2/5/1581089357407-1580819448160-vnpay.png',
+                            imageWidth: 100,
+                            confirmButtonColor: '#007bff'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Đặt vé thành công!',
+                            text: 'Vui lòng thanh toán khi nhận vé.',
+                            confirmButtonColor: '#28a745'
+                        });
+                    }
+                }, 2000);
+            });
+        });
+
+        AOS.init({ duration:1000, once:true });
+    });
+    // --- Hàm để tạo HTML cho một thẻ tour ---
+    function createTourCard(tour) {
+        // Định dạng giá tiền (ví dụ: 65000 -> 65.000)
+        const formattedPrice = tour.price.toLocaleString('vi-VN');
+        // Thêm thẻ "Giảm giá" nếu có
+        const discountBadge = tour.isDiscount ? '<div class="discount-badge">Giảm giá</div>' : '';
+        // Dùng template literal để tạo HTML
+        return `
+            <div class="tour-card" data-tooltip="${tour.title}" style="animation-delay: ${Math.random() * 0.3}s">
+                <div class="card-image">
+                    <img src="${tour.image}" alt="${tour.title}">
+                        ${discountBadge}
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${tour.title}</h3>
+                    <div class="card-rating">
+                        <i class="fas fa-star"></i> ${tour.rating.toFixed(1)}
+                    </div>
+                    <div class="card-price">
+                        Từ <strong>${formattedPrice} đ</strong>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    // Giữ dropdown mở khi click vào "Du lịch"
+    $('#dulichDropdown').on('click', function(e) {
+        e.preventDefault(); // chặn hành vi mặc định của Bootstrap
+        const parent = $(this).closest('.nav-item.dropdown');
+        const menu = parent.find('.mega-menu');
+    });
+    // Đổi màu navbar khi cuộn xuống
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+</script>
+</body>
+</html>

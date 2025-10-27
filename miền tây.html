@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du lịch Miền Tây Nam Bộ - Khám phá Việt Nam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: rgb(0, 153, 255);   
+            --secondary-color: #ffb300;  
+            --text-color: #333333;
+            --background-light: #f7f7f7;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            line-height: 1.6;
+            text-align: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif; 
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        .hero-banner {
+            background-image: url('https://vietreal.net.vn/wp-content/uploads/2021/05/1-Du-lich-mien-Tay-tu-tuc.jpg' );
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+            text-align: center;
+        }
+        .hero-overlay h1 {
+            font-family: 'Merriweather';
+            font-size: 64px; 
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 1); 
+            max-width: 9000px;
+            letter-spacing: 2px; 
+            text-align: center;
+        }
+        .hero-overlay p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #ff9800;
+            transform: translateY(-2px);
+        }
+        .tours-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .tours-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            color: var(--primary-color);
+        }
+        .tours-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+        .tours-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+            gap: 30px;
+            padding-top: 20px;
+        }
+        .tours-section > h2 {
+            grid-column: 1 / -1;
+        }
+        .tour-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .tour-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        .image-box {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .card-content .subtitle {
+            font-size: 14px;
+            color: #6c757d;
+            min-height: 40px; 
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .duration {
+            font-weight: 700;
+            color: #5a6268;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        .tour-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s;
+        }
+        .tour-button:hover {
+            background-color: #00695c;
+        }
+        .detail-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .detail-section h2 {
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+
+        .hagiang-detail {
+            background-color: #e8f5e9;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .day-plan {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .day-plan h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .day-plan ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .day-plan li {
+            margin-bottom: 10px;
+        }
+
+        .day-plan .highlight {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo"><img src="logo1.jpg" width="70px">HOCHIMINH TOURIST</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="#tours">Tour Nổi Bật </a></li>
+                    <li><a href="phú quốc.html">Phú Quốc</a></li>
+                    <li><a href="rạch giá.html">Rạch Giá</a></li>
+                    <li><a href="#contact">Đặt Tour</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-banner">
+        <div class="hero-overlay">
+            <div class="hero-image" style="background-image: url('image/z7156494250735_ed456f167899b90facf7e4e4495f2b64.jpg');"></div>
+            <div class="container">
+                <h1>Hành Trình Kết Nối: TPHCM- RẠCH GIÁ &ndash; PHÚ QUỐC</h1>
+                <p>Sự kết hợp độc đáo giữa vẻ đẹp trù phú, mộc mạc của miền Tây Nam Bộ và sự quyến rũ, hiện đại của Đảo Ngọc phương Nam.</p>
+                <a href="#tours" class="cta-button">KHÁM PHÁ NGAY</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="tours-section container">
+        <h2>LỰA CHỌN TUYỆT VỜI</h2>
+            <div class="tour-card phuquoc-tour" data-aos="zoom-in">
+                <div class="image-box" style="background-image: url('image/z7156492917453_e76ed2f33adce2e039c9f5c33b9e7ac3.jpg');"></div>
+                <div class="card-content">
+                    <h3>PHÚ QUỐC</h3>
+                    <p class="subtitle">Phú Quốc sẽ là điểm dừng chân hoàn hảo để thư giãn, tận hưởng biển xanh, cát trắng và các khu vui chơi giải trí đẳng cấp quốc tế.</p>
+                    <div class="info-row">
+                        <span class="duration">3 Ngày 2 Đêm Trọn Gói (Chưa gồm vé tàu/máy bay)</span>
+                        <span class="price">3.990.000 VNĐ</span>
+                    </div>
+                    <a href="phú quốc.html" class="tour-button">Xem Chi Tiết</a>
+                </div>
+            </div>
+
+            <div class="tour-card rachgia-tour" data-aos="zoom-in">
+                <div class="image-box" style="background-image: url('image/z7156493333827_5b967f715ed100d8533fa8c9d0541edf.jpg');"></div>
+                <div class="card-content">
+                    <h3>RẠCH GIÁ</h3>
+                    <p class="subtitle">Rạch Giá là thành phố ven biển của tỉnh Kiên Giang, đóng vai trò là cửa ngõ giao thương quan trọng và là nơi tập trung các chuyến tàu đi Phú Quốc.</p>
+                    <div class="info-row">
+                        <span class="duration">1 Ngày Trọn Gói</span>
+                        <span class="price">1.000.000 VNĐ</span>
+                    </div>
+                    <a href="rạch giá.html" class="tour-button">Xem Chi Tiết</a>
+                </div>
+            </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Liên hệ: Hotline 1900 XXXX | Email: info@hochiminhtourist.vn</p>
+            <p>&copy; 2025 HoChiMinhTourist. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

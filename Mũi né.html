@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Hà Giang 3 Ngày 2 Đêm - Chinh Phục Cao Nguyên Đá</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><style>
+    :root {
+        --primary-color:rgb(0, 153, 255); 
+        --secondary-color: #ffb300;  
+        --text-color: #333333;
+        --background-light: #fdfdfd; 
+        --accent-color: #c0ca33;    
+        --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+        background-color: var(--background-light);
+        line-height: 1.6;
+    }
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    h1, h2, h3 {
+        color: #263238;
+        font-weight: 700;
+    }
+    header {
+        background-color: white;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-family: 'Playfair Display', serif; 
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    nav ul li a {
+        color: var(--text-color);
+        text-decoration: none;
+        padding: 10px 15px;
+        transition: color 0.3s, border-bottom 0.3s;
+        font-weight: 500;
+    }
+    nav ul li a:hover {
+        color: var(--secondary-color);
+        border-bottom: 3px solid var(--primary-color);
+    }
+    .hero-banner {
+        position: relative;
+        min-height: 650px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.7) grayscale(20%); 
+        transition: filter 0.5s;
+    }
+    .hero-overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        z-index: 1;
+        text-align: center;
+    }
+    .hero-overlay h1 {
+        font-family: 'Merriweather';
+        font-size: 64px; 
+        margin-bottom: 15px;
+        color: white;
+        text-shadow: 3px 3px 10px rgba(0, 0, 0, 1); 
+        max-width: 9000px;
+        letter-spacing: 2px; 
+        text-align: center;
+    }
+    .hero-overlay p {
+        font-size: 24px;
+        margin-bottom: 40px;
+        font-style: italic;
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        padding: 15px 40px;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 18px;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        text-transform: uppercase;
+        box-shadow: 0 5px 15px rgba(255, 179, 0, 0.4);
+    }
+    .cta-button:hover {
+        background-color: #ff9800;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 179, 0, 0.6);
+    }
+    .tour-overview {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 50px 0;
+        background-color: white;
+    box-shadow: var(--shadow-light);
+        margin-top: -80px; 
+        position: relative;
+        z-index: 5;
+        border-radius: 10px;
+        border-top: 5px solid var(--secondary-color); 
+    }
+    .overview-box {
+        text-align: center;
+        padding: 0 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .overview-box p {
+        color: #6c757d;
+        margin: 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .overview-box h3 {
+        color: var(--primary-color);
+        margin: 8px 0 0;
+        font-size: 22px;
+        font-family: 'Merriweather';
+    }
+    .overview-box.price h3 {
+        color: #d84315; 
+        font-size: 28px;
+    }
+    .detail-section {
+        padding: 100px 0 80px;
+        background-color: var(--background-light);
+        text-align: center;
+    }
+    .detail-section h2 {
+        margin-bottom: 60px;
+        font-size: 38px;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 15px;
+    }
+    .detail-section h2::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+    .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px; 
+        text-align: left;
+    }
+    .day-plan {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+        border: 1px solid #eee;
+        transition: transform 0.4s ease-in-out;
+    }
+    .day-plan:hover {
+        transform: scale(1.03); 
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--secondary-color);
+    }
+    .day-plan h4 {
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        margin: -30px -30px 20px -30px; 
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        font-size: 20px;
+        font-family: 'Merriweather';
+    }
+    .day-plan ul {
+        list-style: none;
+        padding: 0;
+    }
+    .day-plan li {
+        margin-bottom: 15px;
+        line-height: 1.5;
+        position: relative;
+        padding-left: 25px;
+    }
+    .day-plan li::before {
+        content: "🌄";
+        color: var(--secondary-color);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1.5em;
+        position: absolute;
+        left: 0;
+    }
+    .day-plan .highlight {
+        font-weight: 700;
+        color: var(--primary-color); 
+    }
+    .service-section {
+        padding: 80px 0;
+        background-color: #f0f4c3; 
+    }
+    .service-section h2 {
+        color: var(--primary-color);
+        margin-bottom: 40px;
+    }
+    .service-grid {
+        gap: 60px; 
+    }
+    .bao-gom, .khong-bao-gom {
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--shadow-light);
+        background-color: white;
+    }
+    .bao-gom h3 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+    }
+    .khong-bao-gom h3 {
+        color: #d84315;
+        border-bottom: 2px solid #ffccbc;
+        padding-bottom: 10px;
+    }
+    .service-section li {
+        padding: 10px 0;
+        font-size: 16px;
+        border-bottom: 1px dotted #e0e0e0;
+    }
+    .service-section .icon {
+        font-size: 20px;
+        margin-right: 15px;
+        font-weight: bold;
+    }
+    .bao-gom .icon { color: var(--accent-color); }
+    .khong-bao-gom .icon { color: #d84315; }
+    .contact-section {
+        padding: 100px 0;
+        background-color: rgb(0, 153, 255);
+        color: white;
+        text-align: center;
+    }
+    .contact-section h2 {
+        color: var(--secondary-color);
+        margin-bottom: 10px;
+        font-family: 'Playfair Display', serif;
+    }
+    .contact-section p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        font-weight: 300;
+    }
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 18px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 1px solid transparent;
+        transition: border 0.3s;
+    }
+
+    .contact-form input:focus {
+        border: 1px solid var(--secondary-color);
+    }
+    .tour-price-calculator {
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        margin-top: 20px;
+    }
+
+    .tour-price-calculator h4 {
+        color: #005baa;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .tour-price-calculator label {
+        display: inline-block;
+        width: 260px;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .tour-price-calculator input {
+        width: 70px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .tour-price-calculator p {
+        font-size: 18px;
+        margin-top: 15px;
+        color: #000;
+    }
+
+    .tour-price-calculator button {
+        background-color: #f9a825;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .tour-price-calculator button:hover {
+        background-color: #ffb300;
+    }
+    /* Hiệu ứng parallax */
+    .hero-image {
+        background-attachment: fixed;
+    }
+    /* Hiệu ứng fade-in khi load */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1.5s forwards;
+    }
+    .fade-in-delay {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 2s forwards;
+    }
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Nút nhấp nháy */
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255,179,0,0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(255,179,0,0); }
+        100% { box-shadow: 0 0 0 0 rgba(255,179,0,0); }
+    }
+
+    /* Modal popup */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        align-items: center;
+        justify-content: center;
+    }
+    .modal-content {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        animation: popUp 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    @keyframes popUp {
+        from { transform: scale(0.7); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    .close-btn {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #333;
+    }
+    .close-btn:hover {
+        color: #ff9800;
+    }
+    .modal-content h2 {
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+    /* Scroll reveal effect */
+    .day-plan, .service-section, .tour-overview {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+    }
+    .day-plan.visible, .service-section.visible, .tour-overview.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* 🍃 Canvas phủ nền */
+    #leafCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 🌅 Hiệu ứng chuyển ảnh banner */
+    .hero-image {
+        transition: opacity 1s ease-in-out;
+    }
+    .hero-overlay {
+        z-index: 2;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo"><img src="logo1.jpg" width="70px">HOCHIMINHTOURIST</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="Nha Trang.html">Nha Trang</a></li>
+                    <li><a href="Mũi né.html">Mũi Né</a></li>
+                    <li><a href="#contact">Đặt Tour</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-banner">
+        <div class="hero-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiEUuNWM1YhHpLkzn8YNc_yS-z0ew8pTa8Qw&s');"></div>
+        <div class="hero-overlay">
+            <div class="container">
+             <h1>Mũi Né - Trải nghiệm hành trình thú vị  </h1>
+                <p>Hành trình 3 Ngày 2 Đêm khám phá vẻ đẹp Mũi Né</p>
+                <a href="#details" class="cta-button">XEM LỊCH TRÌNH CHI TIẾT</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-overview container">
+        <div class="overview-box duration">
+            <p>Thời gian</p>
+            <h3>3 Ngày 2 Đêm</h3>
+        </div>
+        <div class="overview-box transport">
+            <p>Phương tiện</p>
+            <h3>Xe Giường Nằm / Ô tô</h3>
+        </div>
+        <div class="overview-box price">
+            <p>Giá từ</p>
+            <h3>3.979.000 VNĐ</h3>
+        </div>
+        <div class="overview-box highlights">
+            <p>Điểm nổi bật</p>
+            <h3>Trường dục thanh bàu trắng, Trung tâm bùn khoáng</h3>
+        </div>
+    </section>
+
+    <section id="details" class="detail-section">
+        <div class="container">
+            <h2>LỊCH TRÌNH KHÁM PHÁ Mũi Né</h2>
+            
+            <div class="detail-grid">
+                <div class="day-plan">
+                    <h4>NGÀY 1: TP. HỒ CHÍ MINH &ndash; PHAN THIẾT &ndash; MŨI NÉ</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> khởi hành đi đến Phan Thiết, tham quan Trường Dục Thanh ngôi trường cổ kính nơi Chủ tịch Hồ Chí Minh vĩ đại từng dừng chân dạy học trước khi ra đi tìm đường cứu nước.</li>
+                        <li><span class="highlight">Tham quan:</span>Tham quan NovaWorld Phan Thiet,  Circus Land, Wonderland Water Park, Dino Park - Công Viên Khủng Long Huyền Bí, Safari Cafe, Quảng trường Bikini Beach (chi phí tự túc di chuyển và tham quan)</li>
+                        <li><span class="highlight">Trưa:</span> Đến Mũi Né, du khách nhận phòng tại resort và có thời gian tự do tận hưởng bãi biển xanh mát.</li>
+                        <li><span class="highlight">Chiều:</span> du khách tự do dạo phố, khám phá các khu chợ đêm sầm uất và thưởng thức vô vàn món ăn đặc sản địa phương tươi ngon.</li>
+                        <li><span class="highlight">Tối:</span> Nghỉ đêm tại Mũi Né.</li>
+                    </ul>
+                </div>
+
+                <div class="day-plan">
+                    <h4>NGÀY 2: MŨI NÉ</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> Ăn sáng. Khởi hành theo cung đường ven biển Mũi Né - Bàu Trắng, Check-in. Đến Bàu Trắng, "tiểu sa mạc Sahara", trải nghiệm cảm giác phấn khích khi chinh phục đồi cát bằng xe Jeep vượt địa hình (chi phí tự túc) </li>
+                        <li><span class="highlight">Trưa:</span> Ăn trưa.</li>
+                        <li><span class="highlight">Chiều:</span>Đến Trung tâm Bùn Khoáng Mũi Né để thư giãn và tận hưởng dịch vụ tắm khoáng (chi phí tắm bùn tự túc).</li>
+                        <li><span class="highlight">Tối:</span> Ăn tối và nghỉ đêm tại Mũi Né. Có thể tham quan Show nhạc kịch nước Huyền Thoại Làng Chài hay Mango Beach. </li>
+                    </ul>
+                </div>
+
+                <div class="day-plan">
+                    <h4>NGÀY 3: MŨI NÉ &ndash; PHAN THIẾT &ndash; TP. HỒ CHÍ MINH</h4>
+                    <ul>
+                        <li><span class="highlight">Sáng:</span> Ăn sáng. Có thể tắm biển thỏa thích trong làn nước mát trong hoặc nghỉ ngơi thư giãn tại khuôn viên resort cho đến giờ làm thủ tục trả phòng.</li>
+                        <li><span class="highlight">Trưa:</span> Ăn trưa, ghé thăm Làng Chài Xưa. </li>
+                        <li><span class="highlight">Chiều:</span> Lên xe về lại Thành phố Hồ Chí Minh.</li>
+                        <li><span class="highlight">Tối:</span> Về đến Thành phố Hồ Chí Minh, kết thúc chuyến đi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="included" class="service-section container">
+        <h2>DỊCH VỤ BAO GỒM VÀ KHÔNG BAO GỒM</h2>
+        <div class="service-grid">
+            <div class="bao-gom">
+                <h3><span class="icon">&#10003;</span> BAO GỒM TRONG TOUR</h3>
+                <ul>
+                    <li>Chi phí xe phục vụ theo chương trình.</li>
+                    <li>Chi phí khách sạn: tiêu chuẩn 2-3 khách/phòng</li>
+                    <li>Chi phí ăn, uống theo chương trình. </li>
+                    <li>Chi phí tham quan theo chương trình.</li>
+                    <li>Chi phí Hướng dẫn viên tiếng Việt. </li>
+                    <li>Bảo hiểm du lịch mức tối đa 50.000.000 VNĐ/khách.</li>
+                </ul>
+            </div>
+            <div class="khong-bao-gom">
+                <h3><span class="icon">&#10007;</span> KHÔNG BAO GỒM</h3>
+                <ul>
+                    <li>Chi phí tham quan Circus Land, show Làng Chài, Nova World Phan Thiết, Mango Beach.</li>
+                    <li>Chi phí cá nhân: giặt ủi, đồ uống ngoài bữa ăn.</li>
+                    <li>Tiền tip cho hướng dẫn viên và lái xe (tùy tâm).</li>
+                    <li>Chi phí thuê trang phục dân tộc, chụp ảnh riêng.</li>
+                    <li>Phụ thu phòng đơn (nếu yêu cầu).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>ĐẶT TOUR VÀ NHẬN ƯU ĐÃI SỚM</h2>
+            <p>Liên hệ ngay để được tư vấn lịch trình chi tiết và giá tốt nhất!</p>
+            <form action="#" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Họ và tên (*)" required>
+                <input type="tel" name="phone" placeholder="Số điện thoại (*)" required>
+                <input type="email" name="email" placeholder="Email (để nhận ưu đãi)">
+                <input type="text" name="departure_date" placeholder="Ngày khởi hành dự kiến">
+                <button type="submit" class="cta-button form-submit-btn">ĐĂNG KÝ ĐẶT CHỖ</button>
+            </form>
+            <div class="tour-price-calculator">
+                <h4>Giá vé</h4>
+                <label>Người lớn (3.979.000đ): </label>
+                <input type="number" id="adult" value="0" min="0" onchange="calculateTotal()"><br>
+
+                <label>Trẻ em (1.990.000đ): </label>
+                <input type="number" id="child" value="0" min="0" onchange="calculateTotal()"><br>
+
+                <label>Em bé (Miễn phí): </label>
+                <input type="number" id="baby" value="0" min="0" onchange="calculateTotal()"><br>
+                <p><b>Tổng tiền:</b> <span id="totalPrice"></span> VNĐ</p>
+                <button type="button" id="openModalBtn">Đặt vé</button>
+            </div>
+        </div>
+    </section>
+    <!-- Modal đặt vé thành công -->
+            <div id="successModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>🎉 Đặt tour thành công!</h2>
+                    <p>Cảm ơn bạn đã đăng ký tour. Nhân viên HoChiMinhTourist sẽ liên hệ sớm nhất!</p>
+                </div>
+            </div>
+    <footer>
+        <div class="container">
+            <p>Liên hệ: Hotline 1900 XXXX | Email: nhom5@vietnamtravel.vn</p>
+            <p>&copy; 2025 HoChiMinhTourist. All rights reserved.</p>
+        </div>
+    </footer>
+    <canvas id="leafCanvas"></canvas>
+    <script>
+        function calculateTotal() {
+            const priceAdult = 3979000;
+            const priceChild = 1990000;
+            const numAdult = parseInt(document.getElementById("adult").value) || 0;
+            const numChild = parseInt(document.getElementById("child").value) || 0;
+            const total = (numAdult * priceAdult) + (numChild * priceChild);
+            document.getElementById("totalPrice").textContent = total.toLocaleString("vi-VN");
+        }
+
+        // Modal popup + hiệu ứng cuộn
+        $(document).ready(function() {
+        const modal = $("#successModal");
+
+        $("#openModalBtn, #bookBtn").click(function() {
+            modal.fadeIn(300);
+        });
+        $(".close-btn").click(function() {
+            modal.fadeOut(200);
+        });
+        $(window).click(function(e) {
+            if ($(e.target).is(modal)) modal.fadeOut(200);
+        });
+
+        $(window).on("scroll", function() {
+            $(".day-plan, .service-section, .tour-overview").each(function() {
+            if ($(this).offset().top < $(window).scrollTop() + $(window).height() - 100) {
+                $(this).addClass("visible");
+            }
+            });
+        });
+        });
+
+        // 🌅 Hero Slider
+        const heroImages = [
+        "https://media.loveitopcdn.com/41316/kcfinder/upload//images/phan_thiet.jpg",
+        "https://statics.vinwonders.com/ke-ga-lighthouse-02_1686549493.jpg",
+        "https://www.dulichbinhthuan.com.vn/UserFiles/files/ANH%20PHU%20QUY%20DEP%2015%20WEB.JPG",
+        "https://ik.imagekit.io/tvlk/blog/2024/10/bai-bien-mui-ne-1-1024x587.jpeg?tr=q-70,c-at_max,w-500,h-300,dpr-2"
+        ];
+        let currentImage = 0;
+        const hero = document.querySelector('.hero-image');
+        setInterval(() => {
+        currentImage = (currentImage + 1) % heroImages.length;
+        hero.style.opacity = 0;
+        setTimeout(() => {
+            hero.style.backgroundImage = `url('${heroImages[currentImage]}')`;
+            hero.style.opacity = 1;
+        }, 600);
+        }, 6000);
+
+        // 🍃 Hiệu ứng lá rơi
+        const canvas = document.getElementById("leafCanvas");
+        const ctx = canvas.getContext("2d");
+        let leaves = [];
+        let W, H;
+
+        function resizeCanvas() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        function createLeaf() {
+        return {
+            x: Math.random() * W,
+            y: Math.random() * -50,
+            size: 15 + Math.random() * 15,
+            speedY: 1 + Math.random() * 2,
+            sway: Math.random() * 1.5,
+            angle: Math.random() * 2 * Math.PI,
+            color: `rgba(${150 + Math.random()*50},${100 + Math.random()*100},50,0.8)`
+        };
+        }
+
+        function drawLeaves() {
+        ctx.clearRect(0, 0, W, H);
+        for (let leaf of leaves) {
+            leaf.y += leaf.speedY;
+            leaf.x += Math.sin(leaf.angle) * leaf.sway;
+            leaf.angle += 0.02;
+            if (leaf.y > H) {
+            leaf.y = Math.random() * -20;
+            leaf.x = Math.random() * W;
+            }
+            ctx.beginPath();
+            ctx.ellipse(leaf.x, leaf.y, leaf.size / 2, leaf.size / 3, 0, 0, 2 * Math.PI);
+            ctx.fillStyle = leaf.color;
+            ctx.fill();
+        }
+        requestAnimationFrame(drawLeaves);
+        }
+        for (let i = 0; i < 30; i++) leaves.push(createLeaf());
+        drawLeaves();
+    </script>
+    <canvas id="leafCanvas"></canvas>
+</body>
+</html>
