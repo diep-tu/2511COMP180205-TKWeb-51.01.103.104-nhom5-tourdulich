@@ -18,6 +18,10 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", sans-serif; }
         body { background: #fff; color: #222; transition: 0.5s ease; overflow-x: hidden; }
@@ -76,33 +80,6 @@
         .tour-info p { font-size: 14px; line-height: 1.4; }
         .tour-info .price { color: #e63946; font-weight: bold; margin-top: 10px; }
 
-        /* Dark mode style */
-        body.dark .tour-card { background: #1e1e1e; color: #ddd; }
-        body.dark header {
-            background: #1f1f1f;
-            color: #eee;
-        }
-        body.dark .navbar {
-            background: #222 !important;
-        }
-        body.dark .nav-link {
-            color: #eee !important;
-        }
-        body.dark footer {
-            background: #111;
-            color: #ccc;
-        }
-        body.dark #chatBox {
-            background: #222;
-            color: #fff;
-        }
-        body.dark #chatBox header {
-            background: #333;
-        }
-        body.dark #topBtn,
-        body.dark #chatBtn {
-            background: #0073e6;
-        }
         /* Nút lên đầu trang */
         #topBtn {
           position: fixed;
@@ -321,6 +298,148 @@
             color: #000 !important;
         }
         }
+        /* THANH TÌM KIẾM TOUR (Select2) */
+        /* Container tổng thể */
+        .select2-container {
+          width: 100% !important;
+          font-family: "Segoe UI", sans-serif;
+        }
+        
+        /* Vùng hiển thị chọn */
+        .select2-container--default .select2-selection--single {
+          height: 40px;
+          border: 2px solid #0073e6;
+          border-radius: 25px;
+          background: #ffffff;
+          box-shadow: 0 2px 6px rgba(0, 115, 230, 0.15);
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          padding: 0 8px;
+        }
+        
+        /* Khi rê chuột hoặc focus */
+        .select2-container--default .select2-selection--single:hover {
+          box-shadow: 0 0 10px rgba(0, 115, 230, 0.4);
+        }
+        
+        .select2-container--default.select2-container--focus .select2-selection--single {
+          border-color: #0051a3;
+          box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.3);
+        }
+        
+        /* Văn bản bên trong */
+        .select2-selection__rendered {
+          line-height: 38px !important;
+          color: #0073e6 !important;
+          font-weight: 600;
+          padding-left: 10px !important;
+        }
+        
+        /* Mũi tên dropdown */
+        .select2-selection__arrow {
+          height: 36px !important;
+          width: 30px;
+        }
+        
+        .select2-selection__arrow b {
+          border-color: #0073e6 transparent transparent transparent !important;
+          border-width: 6px 6px 0 6px !important;
+        }
+        
+        /* Danh sách kết quả */
+        .select2-container--default .select2-results > .select2-results__options {
+          max-height: 250px;
+          overflow-y: auto;
+          border-radius: 10px;
+        }
+        
+        /* Item trong danh sách */
+        .select2-container--default .select2-results__option {
+          padding: 8px 12px;
+          font-size: 15px;
+          color: #333;
+          transition: 0.2s;
+        }
+        
+        /* Khi hover item */
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+          background: #0073e6;
+          color: #fff;
+          transform: scale(1.02);
+        }
+        
+        /* Icon placeholder */
+        .select2-container--default .select2-selection__placeholder {
+          color: #666 !important;
+          font-style: italic;
+        }
+        
+        /* ====================== DARK MODE ====================== */
+        body.dark .select2-container--default .select2-selection--single {
+          background: #222;
+          border-color: #00aaff;
+          color: #eee;
+          box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+        }
+        
+        body.dark .select2-selection__rendered {
+          color: #00aaff !important;
+        }
+        
+        body.dark .select2-selection__arrow b {
+          border-color: #00aaff transparent transparent transparent !important;
+        }
+        
+        body.dark .select2-results__option {
+          color: #ddd;
+          background: #1e1e1e;
+        }
+        
+        body.dark .select2-results__option--highlighted[aria-selected] {
+          background: #00aaff;
+          color: #fff;
+        }
+        
+        /* Hiệu ứng mượt khi mở danh sách */
+        .select2-dropdown {
+          border: none !important;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          border-radius: 10px;
+          animation: fadeSlide 0.25s ease forwards;
+        }
+        
+        @keyframes fadeSlide {
+          from { opacity: 0; transform: translateY(-5px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+         /* Dark mode style */
+        body.dark .tour-card { background: #1e1e1e; color: #ddd; }
+        body.dark header {
+            background: #1f1f1f;
+            color: #eee;
+        }
+        body.dark .navbar {
+            background: #222 !important;
+        }
+        body.dark .nav-link {
+            color: #eee !important;
+        }
+        body.dark footer {
+            background: #111;
+            color: #ccc;
+        }
+        body.dark #chatBox {
+            background: #222;
+            color: #fff;
+        }
+        body.dark #chatBox header {
+            background: #333;
+        }
+        body.dark #topBtn,
+        body.dark #chatBtn {
+        background: #0073e6;
+        }
 
     </style>
 </head>
@@ -400,6 +519,11 @@
                 <li class="nav-item"><a class="nav-link" href="Liên hệ.html">Liên hệ</a></li>
             </ul>
 
+            <form class="d-flex ms-3" role="search" style="width: 250px;">
+              <select id="tourSearch" class="form-select" style="width: 100%;">
+                <option value="">🔍 Tìm tour...</option>
+              </select>
+            </form>
             <!-- Nút Dark Mode -->
             <button id="toggleMode" class="btn btn-outline-primary ms-3"><i class="fa-solid fa-moon"></i></button>
             </div>
@@ -636,6 +760,38 @@
             $('.mega-menu').slideUp(400);
             $('.nav-item.dropdown').removeClass('show');
         }
+    });
+    // TÌM KIẾM TOUR (Select2) 
+    const allTours = [
+      { id: 'mienbac', text: 'Hà Giang' },
+      { id: 'mienbac', text: 'Hà Nội' },
+      { id: 'mientrung', text: 'Nha Trang' },
+      { id: 'mientrung', text: 'Mũi Né' },
+      { id: 'taynguyen', text: 'Đắk Lắk' },
+      { id: 'taynguyen', text: 'Lâm Đồng' },
+      { id: 'taynambo', text: 'Phú Quốc' },
+      { id: 'taynambo', text: 'Rạch Giá' },
+      { id: 'dongnambo', text: 'Vũng Tàu' },
+      { id: 'dongnambo', text: 'Tây Ninh' },
+    ];
+
+    // Khởi tạo Select2
+    $('#tourSearch').select2({
+      placeholder: "🔍 Nhập tên tour...",
+      data: allTours,
+      allowClear: true
+    });
+
+    // Khi người dùng chọn tour
+    $('#tourSearch').on('select2:select', function (e) {
+      const selected = e.params.data;
+      const section = document.getElementById(selected.id);
+      if (section) {
+        $('html, body').animate({ scrollTop: $(section).offset().top - 100 }, 700);
+        // Hiệu ứng highlight
+        $(section).css('box-shadow', '0 0 20px rgba(0,150,255,0.5)');
+        setTimeout(() => $(section).css('box-shadow', 'none'), 1500);
+      }
     });
 
   </script>
